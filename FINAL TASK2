@@ -1,0 +1,136 @@
+ CODE FINAL TASK 2
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis with Logistic Regression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Results</h1>
+
+        <h2>Dataset Preview</h2>
+        <table id="dataset-preview">
+            <tr>
+                <th>Review</th>
+                <th>Sentiment</th>
+            </tr>
+            <!-- Example rows (Replace with actual data dynamically) -->
+            <tr>
+                <td>The product was amazing!</td>
+                <td>Positive</td>
+            </tr>
+            <tr>
+                <td>Not worth the money.</td>
+                <td>Negative</td>
+            </tr>
+        </table>
+
+        <h2>Model Evaluation</h2>
+        <p id="accuracy">Model Accuracy: <!-- Accuracy dynamically inserted here -->%</p>
+
+        <h2>Classification Report</h2>
+        <pre id="classification-report">
+            <!-- Insert classification report dynamically -->
+        </pre>
+
+        <h2>Confusion Matrix</h2>
+        <table id="confusion-matrix">
+            <tr>
+                <th></th>
+                <th>Predicted Negative</th>
+                <th>Predicted Positive</th>
+            </tr>
+            <tr>
+                <th>Actual Negative</th>
+                <td><!-- TN dynamically inserted --></td>
+                <td><!-- FP dynamically inserted --></td>
+            </tr>
+            <tr>
+                <th>Actual Positive</th>
+                <td><!-- FN dynamically inserted --></td>
+                <td><!-- TP dynamically inserted --></td>
+            </tr>
+        </table>
+
+        <h2>Prediction on New Review</h2>
+        <p id="prediction">Predicted Sentiment: <!-- Prediction dynamically inserted here --></p>
+    </div>
+
+    <script>
+        // Example dynamic data insertion (Replace with actual server-generated data)
+        const accuracy = 92.47; // Example accuracy
+        const classificationReport = `
+              precision    recall  f1-score   support
+
+           0       0.93      0.90      0.92       150
+           1       0.91      0.94      0.93       150
+
+    accuracy                           0.92       300
+   macro avg       0.92      0.92      0.92       300
+weighted avg       0.92      0.92      0.92       300
+        `;
+
+        const confusionMatrix = [
+            [135, 15], // TN, FP
+            [9, 141]   // FN, TP
+        ];
+
+        const prediction = "Positive"; // Example prediction
+
+        document.getElementById("accuracy").textContent = `Model Accuracy: ${accuracy}%`;
+        document.getElementById("classification-report").textContent = classificationReport;
+
+        const matrixTable = document.getElementById("confusion-matrix");
+        matrixTable.rows[1].cells[1].textContent = confusionMatrix[0][0]; // TN
+        matrixTable.rows[1].cells[2].textContent = confusionMatrix[0][1]; // FP
+        matrixTable.rows[2].cells[1].textContent = confusionMatrix[1][0]; // FN
+        matrixTable.rows[2].cells[2].textContent = confusionMatrix[1][1]; // TP
+
+        document.getElementById("prediction").textContent = `Predicted Sentiment: ${prediction}`;
+    </script>
+</body>
+</html>
+
+
+
+
+
